@@ -4,25 +4,7 @@ import App from './App.vue'
 createApp(App).mount('#app')
 
 const fun = () => {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    console.log('呃呃呃呃')
+  console.log('呃呃呃呃')
 }
 
 fun()
