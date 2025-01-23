@@ -22,7 +22,6 @@ import '@/styles/index.scss'
 import router from './router'
 app.use(router)
 
-
 import pinia from './store'
 app.use(pinia)
 

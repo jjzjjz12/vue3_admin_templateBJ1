@@ -4,17 +4,38 @@
       <el-row>
         <el-col :span="12" :xs="0"></el-col>
         <el-col :span="12" :xs="24">
-          <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
+          <el-form
+            class="login_form"
+            :model="loginForm"
+            :rules="rules"
+            ref="loginForms"
+          >
             <h1>Hello</h1>
             <h2>欢迎来到硅谷甄选</h2>
             <el-form-item prop="username">
-              <el-input :prefix-icon="User" v-model="loginForm.username"></el-input>
+              <el-input
+                :prefix-icon="User"
+                v-model="loginForm.username"
+              ></el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
+              <el-input
+                type="password"
+                :prefix-icon="Lock"
+                v-model="loginForm.password"
+                show-password
+              ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button class="login_btn" type="primary" size="default" @click="login" :loading="loading">登录</el-button>
+              <el-button
+                class="login_btn"
+                type="primary"
+                size="default"
+                @click="login"
+                :loading="loading"
+              >
+                登录
+              </el-button>
             </el-form-item>
           </el-form>
         </el-col>
@@ -24,38 +45,37 @@
 </template>
 
 <script setup lang="ts">
-import {User,Lock} from '@element-plus/icons-vue';
-import { reactive,ref } from 'vue';
+import { User, Lock } from '@element-plus/icons-vue'
+import { reactive, ref } from 'vue'
 // 引入用户小仓库
-import useUserStore from '@/store/modules/user';
+import useUserStore from '@/store/modules/user'
 // 获取路由器
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 // 消息弹框
-import { ElNotification } from 'element-plus';
+import { ElNotification } from 'element-plus'
 // 时间
-import { getTime } from '@/utils/time';
+import { getTime } from '@/utils/time'
 
 let $router = useRouter()
 
-let useStore = useUserStore();
-let loginForm = reactive({username:'admin',password:'111111'})
+let useStore = useUserStore()
+let loginForm = reactive({ username: 'admin', password: '111111' })
 
 let loading = ref(false)
 
 // 获取el-form组件
 let loginForms = ref()
 
-async function login(){
+async function login() {
   try {
     // 保证校验通过再发请求
-  await loginForms.value.validate()
-  // 加载效果开启
-  loading.value = true
-  
+    await loginForms.value.validate()
+    // 加载效果开启
+    loading.value = true
   } catch (error) {
     console.log('ddd')
   }
-  
+
   // 通知仓库发送登录请求
   try {
     // 可以书写.then
@@ -64,17 +84,17 @@ async function login(){
     $router.push('/')
     // 登录成功的提示
     ElNotification({
-      type:'success',
-      message:'欢迎回来',
-      title:`HI!${getTime()}好`
+      type: 'success',
+      message: '欢迎回来',
+      title: `HI!${getTime()}好`,
     })
     loading.value = false
   } catch (error) {
     // 加载效果消失
     loading.value = false
     ElNotification({
-      type:'error',
-      message:(error as Error).message
+      type: 'error',
+      message: (error as Error).message,
     })
   }
 }
@@ -98,46 +118,41 @@ const validatePass = (rule: any, value: any, callback: any) => {
 }
 
 const rules = reactive({
-  username:[
-    {trigger:'change',validator: validateUserName}
+  username: [
+    { trigger: 'change', validator: validateUserName },
     // {required:true,message:'用户名不能为空',trigger:'blur'},
     // { required:true,min: 5, max: 10, message: '账号长度6-10位', trigger: 'change' }
-
   ],
-  password:[
-  { validator: validatePass, trigger: 'blur' }  
-  // { required:true,min: 6, max: 15, message: '密码长度6-15', trigger: 'change' }
-]
+  password: [
+    { validator: validatePass, trigger: 'blur' },
+    // { required:true,min: 6, max: 15, message: '密码长度6-15', trigger: 'change' }
+  ],
 })
-
-
-
-
 </script>
 
 <style scoped lang="scss">
-.login_container{
+.login_container {
   width: 100%;
   height: 100vh;
   background: url('@/assets/images/background.jpg') no-repeat;
   background-size: cover;
-  .login_form{
-    position:relative;
+  .login_form {
+    position: relative;
     width: 80%;
-    top:30vh;
+    top: 30vh;
     background: url('@/assets/images/login_form.png') no-repeat;
     background-size: cover;
     padding: 40px;
-    h1{
-      color:white;
-      font-size:40px;
+    h1 {
+      color: white;
+      font-size: 40px;
     }
-    h2{
-      color:white;
-      font-size:20px;
+    h2 {
+      color: white;
+      font-size: 20px;
       margin: 20px 0px;
     }
-    .login_btn{
+    .login_btn {
       width: 100%;
     }
   }
