@@ -6,8 +6,13 @@
       <!-- 展示菜单 -->
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
-        <el-menu :collapse="LayOutSettingStore.flod" background-color="$base-menu-background"
-          active-text-color="#064ea1" :default-active="$route.path" text-color="white">
+        <el-menu
+          :collapse="LayOutSettingStore.flod"
+          background-color="$base-menu-background"
+          active-text-color="#064ea1"
+          :default-active="$route.path"
+          text-color="white"
+        >
           <!-- 根据路由动态生成菜单 -->
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
@@ -18,7 +23,7 @@
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示 -->
-    <div class=" layout_main" :class="{ flod: LayOutSettingStore.flod }">
+    <div class="layout_main" :class="{ flod: LayOutSettingStore.flod }">
       <Main></Main>
     </div>
   </div>
@@ -42,8 +47,6 @@ let userStore = useUserStore()
 let LayOutSettingStore = useLayOutSettingStore()
 // 拿到当前路由，default-active刷新后活动当前路由菜单高亮
 let $route = useRoute()
-
-
 </script>
 
 <style scoped lang="scss">

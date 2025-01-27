@@ -2,7 +2,11 @@
   <template v-for="(item, index) in menuList" :key="item.path">
     <!-- 没有子路由 -->
     <template v-if="!item.children">
-      <el-menu-item v-if="!item.meta.hidden" @click="goRoute" :index="item.path">
+      <el-menu-item
+        v-if="!item.meta.hidden"
+        @click="goRoute"
+        :index="item.path"
+      >
         <el-icon>
           <component :is="item.meta.icon"></component>
         </el-icon>
@@ -13,7 +17,11 @@
     </template>
     <!-- 一个子路由 -->
     <template v-if="item.children && item.children.length == 1">
-      <el-menu-item v-if="!item.meta.hidden" :index="item.path" @click="goRoute">
+      <el-menu-item
+        v-if="!item.meta.hidden"
+        :index="item.path"
+        @click="goRoute"
+      >
         <el-icon>
           <component :is="item.meta.icon"></component>
         </el-icon>
@@ -39,7 +47,7 @@
 
 <script setup lang="ts">
 // 获取路由器
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 // 获取父组件传递过来的全部路由数组
 defineProps(['menuList'])
