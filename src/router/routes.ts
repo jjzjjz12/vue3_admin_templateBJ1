@@ -8,17 +8,17 @@ export const constantRoute: RouteRecordRaw[] = [
     meta: {
       title: '登录',
       hidden: true, // 代表路由标题在菜单中是否隐藏
-      icon: 'House'
-    }
+      icon: 'House',
+    },
   },
   {
     path: '/',
     component: () => import('@/layout/index.vue'),
     name: 'layout', // 命名路由
     meta: {
-      title: 'layout',
+      title: '',
       hidden: false, // 代表路由标题在菜单中是否隐藏
-      icon: 'Loading'
+      icon: 'Loading',
     },
     // 重定向
     redirect: '/home',
@@ -29,10 +29,10 @@ export const constantRoute: RouteRecordRaw[] = [
         meta: {
           title: '首页',
           hidden: false, // 代表路由标题在菜单中是否隐藏
-          icon: 'Setting'
-        }
-      }
-    ]
+          icon: 'Setting',
+        },
+      },
+    ],
   },
   {
     path: '/404',
@@ -41,8 +41,8 @@ export const constantRoute: RouteRecordRaw[] = [
     meta: {
       title: '404',
       hidden: true, // 代表路由标题在菜单中是否隐藏
-      icon: 'Position'
-    }
+      icon: 'Position',
+    },
   },
   {
     path: '/screen',
@@ -51,17 +51,18 @@ export const constantRoute: RouteRecordRaw[] = [
     meta: {
       title: '数据大屏',
       hidden: false,
-      icon: 'View'
-    }
+      icon: 'View',
+    },
   },
   {
     path: '/acl',
     component: () => import('@/layout/index.vue'),
     name: 'acl',
+    redirect: '/acl/user',
     meta: {
       title: '权限管理',
       hidden: false,
-      icon: 'Lock'
+      icon: 'Lock',
     },
     children: [
       {
@@ -71,8 +72,8 @@ export const constantRoute: RouteRecordRaw[] = [
         meta: {
           title: '用户管理',
           hidden: false,
-          icon: 'User'
-        }
+          icon: 'User',
+        },
       },
       {
         path: '/acl/role',
@@ -81,8 +82,8 @@ export const constantRoute: RouteRecordRaw[] = [
         meta: {
           title: '角色管理',
           hidden: false,
-          icon: 'Avatar'
-        }
+          icon: 'Avatar',
+        },
       },
       {
         path: '/acl/permission',
@@ -91,20 +92,20 @@ export const constantRoute: RouteRecordRaw[] = [
         meta: {
           title: '菜单管理',
           hidden: false,
-          icon: 'Grid'
-        }
+          icon: 'Grid',
+        },
       },
-
-    ]
+    ],
   },
   {
     path: '/product',
     component: () => import('@/layout/index.vue'),
     name: 'Product',
+    redirect: '/product/trademark',
     meta: {
       title: '商品管理',
       hidden: false,
-      icon: 'Goods'
+      icon: 'Goods',
     },
     children: [
       {
@@ -113,8 +114,8 @@ export const constantRoute: RouteRecordRaw[] = [
         name: 'Trademark',
         meta: {
           title: '品牌管理',
-          icon: 'UserFilled'
-        }
+          icon: 'UserFilled',
+        },
       },
       {
         path: '/product/attr',
@@ -122,8 +123,8 @@ export const constantRoute: RouteRecordRaw[] = [
         name: 'Attr',
         meta: {
           title: '属性管理',
-          icon: 'HelpFilled'
-        }
+          icon: 'HelpFilled',
+        },
       },
       {
         path: '/product/spu',
@@ -131,8 +132,8 @@ export const constantRoute: RouteRecordRaw[] = [
         name: 'Spu',
         meta: {
           title: 'SPU管理',
-          icon: 'ForkSpoon'
-        }
+          icon: 'ForkSpoon',
+        },
       },
       {
         path: '/product/sku',
@@ -140,11 +141,10 @@ export const constantRoute: RouteRecordRaw[] = [
         name: 'Sku',
         meta: {
           title: 'SKU管理',
-          icon: 'Basketball'
-        }
+          icon: 'Basketball',
+        },
       },
-
-    ]
+    ],
   },
   {
     path: '/:pathMatch(.*)*',
@@ -153,7 +153,7 @@ export const constantRoute: RouteRecordRaw[] = [
     meta: {
       title: '任意路由',
       hidden: true,
-      icon: 'View'
-    }
-  }
+      icon: 'View',
+    },
+  },
 ]
